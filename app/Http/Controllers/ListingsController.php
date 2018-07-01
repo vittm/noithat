@@ -7,34 +7,49 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 class ListingsController extends Controller
 {
-    public function index(Request $rq)
+    // public function index(Request $rq)
+    // {
+    //     $banner = DB::table('categories')->where('id',$rq->id)->first();
+    //     $product = DB::table('posts')->where('category_id',$banner->id)->get();   
+    //     if($banner->parent_id != null) {
+    //         $categoryParent = DB::table('categories')->where('id',$banner->id)->first(); 
+    //         $category = DB::table('categories')->where('parent_id',$banner->id)->get(); 
+    //     }else {
+    //         $category = DB::table('categories')->where('parent_id',$banner->id)->get();
+    //     }
+    //     return view('listing',['banner'=>$banner,'category'=>$category,'product'=>$product]);            
+    // }
+    public function listing_style()
     {
-        $banner = DB::table('categories')->where('id',$rq->id)->first();
-        $product = DB::table('posts')->where('category_id',$banner->id)->get();   
-        if($banner->parent_id != null) {
-            $categoryParent = DB::table('categories')->where('id',$banner->id)->first(); 
-            $category = DB::table('categories')->where('parent_id',$banner->id)->get(); 
-        }else {
-            $category = DB::table('categories')->where('parent_id',$banner->id)->get();
-        }
-        return view('listing',['banner'=>$banner,'category'=>$category,'product'=>$product]);            
+        $id= DB::table('categories')->where('slug','=','phong-cach')->first();
+        $listings = DB::table('categories')->where('parent_id','=',$id->id)->get();  
+        return view('style.listing',['listings'=>$listings]);
     }
-    public function all()
+    public function listing_project()
     {
-        $banner = DB::table('categories')->where('slug','san-pham')->first();
-        $product = DB::table('posts')->get();   
-        if($banner->parent_id != null) {
-            $categoryParent = DB::table('categories')->where('id',$banner->id)->first(); 
-            $category = DB::table('categories')->where('parent_id',$banner->id)->get(); 
-        }else {
-            $category = DB::table('categories')->where('parent_id',$banner->id)->get();
-        }
-        return view('listing',['banner'=>$banner,'category'=>$category,'product'=>$product]);            
+        $listings = DB::table('projects')->get();  
+        return view('project',['listings'=>$listings]);
     }
-    public function detail(Request $rq)
+    public function listing_blog()
     {
-        $product = DB::table('posts')->where('slug',$rq->title)->first();  
-        $random = DB::table('posts')->inRandomOrder()->limit('4')->get();   
-        return view('detail',['product'=>$product,'random'=>$random]);
+        $id= DB::table('categories')->where('slug','=','tin-tuc')->first();
+        $listingsHot = DB::table('posts')->where([['status','=','PUBLISHED'],['hot','=','1'],['category_id','=',$id->id]])->first();  
+        if(isset($listingsHot)){
+        $listings = DB::table('posts')->where([['status','=','PUBLISHED'],['id','!=',$listingsHot->id],['category_id','=',$id->id]])->get(); 
+        }else {
+            $listings = DB::table('posts')->where([['status','=','PUBLISHED'],['category_id','=',$id->id]])->get(); 
+        } 
+        return view('blog.listing',['listingsHot'=>$listingsHot,'listings'=>$listings]);
+    }
+    public function listing_rec()
+    {
+        $id= DB::table('categories')->where('slug','=','tuyen-dung')->first();
+        $listingsHot = DB::table('posts')->where([['status','=','PUBLISHED'],['hot','=','1'],['category_id','=',$id->id]])->first();
+        if(isset($listingsHot)){
+            $listings = DB::table('posts')->where([['status','=','PUBLISHED'],['id','!=',$listingsHot->id],['category_id','=',$id->id]])->get();  
+        }else {
+            $listings = DB::table('posts')->where([['status','=','PUBLISHED'],['category_id','=',$id->id]])->get();  
+        }
+        return view('blog.listing',['listingsHot'=>$listingsHot,'listings'=>$listings]);
     }
 }

@@ -120,13 +120,13 @@ return [
         /*
          * Select default language
          */
-        'default' => 'en',
+        'default' => 'vi',
 
         /*
          * Select languages that are supported.
          */
         'locales' => [
-            'en',
+            'vi',
             //'pt',
         ],
     ],

@@ -15,10 +15,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        $menuhomes = DB::table('menuhomes')->get();
-        // $script= DB::table('scriptcodes')->first();
-        $menuhome= DB::table('menuhomes')->get();
-        view()->share(['menuhomes' => $menuhome]);
+        $menuhome = DB::table('categories')->where('parent_id','=',null)->get();
+        $textinfo = DB::table('editcontacts')->first();
+        view()->share(['menuhomes' => $menuhome,'textinfo'=>$textinfo]);
     }
 
     /**

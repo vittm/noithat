@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\User;
+use App\Contact;
 use DB;
 use Auth;
 use App\Http\Requests;
@@ -9,10 +10,23 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $slides = DB::table('sliders')->get();
-        $specials = DB::table('specials')->get();
-        $products = DB::table('posts')->orderBy('id','desc')->limit('8')->get();
-        $categories = DB::table('categories')->where('parent_id','2')->get();
-        return view('welcome',['slides'=>$slides,'specials'=> $specials,'products'=>$products,'categories'=>$categories]);            
+        $info_one = DB::table('sliders')->first();
+        $info_two = DB::table('infos')->first();
+        $process = DB::table('processes')->get();
+        $videos = DB::table('clips')->first();
+        $types = DB::table('categories')->where('hot','=',1)->get();
+        $projects = DB::table('projects')->where('hot','=',1)->get();
+        return view('welcome',['info_one'=>$info_one,'info_two'=> $info_two,'process'=>$process,'videos'=>$videos,'types'=>$types,'projects'=>$projects]);            
+    }
+    public function contact(Request $request){
+        $data= ([
+            'phone'=> $request->phone,
+            'email' => $request->email,
+            'name' => $request->name,
+            'content' => $request->content,
+        ]);
+            
+        Contact::insert($data);
+        return view('thanks');
     }
 }

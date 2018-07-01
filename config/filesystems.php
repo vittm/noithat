@@ -50,8 +50,8 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
-            'url' => env('APP_URL').'adamarin/storage/app/public',
+            'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'art/storage/app/public',
             'visibility' => 'public',
         ],
 
