@@ -12,7 +12,7 @@
 	@if($detail->meta_description == null)
 	<meta property="og:description"   content="{!! $detail->excerpt !!}" />
 	@endif
-    <meta property="og:image"         content="{{Voyager::image($detail->image)}}    " />
+    <meta property="og:image"         content="{{Voyager::image($detail->image)}}" />
     <meta name="keywords"             content="{{ $detail->meta_keywords}}"/>
 @endsection
 @section('content')
@@ -43,7 +43,12 @@
 					<div class="entry-content__wrap-group__right__quote__title">
 						<span>Ad-Banner</span>
 					</div>
-					<img src="https://adtima-media-td.zadn.vn/2018/06/6ca7dc8f-a44f-4904-ba87-84056a510774/Right.png"/>
+					<a href="{{{ $bannerblog->url or '' }}}" class="entry-content__wrap-group__right__banner">
+						<br>
+						@if(isset($bannerblog->images))
+							<img src="{{Voyager::image($bannerblog->images)}}" style="max-width:240px"/>
+						@endif
+					</a>
 				</div>
 			</div>
 		</section>

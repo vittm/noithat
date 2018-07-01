@@ -47,7 +47,7 @@
 		<br/>
 		<br/>
 		<br/>
-		<p>{{ $textinfo -> text }}</p>
+		<p class="entry-content__contact__text">{{ $textinfo -> text }}</p>
 	</div>
 </div>
 @endsection

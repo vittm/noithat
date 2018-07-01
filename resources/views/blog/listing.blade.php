@@ -54,9 +54,12 @@
 						<span class="entry-content__wrap-group__right__quote__box--author"> - STEVE JOBS</span>
 					</div>
 				</div>
-				<div class="entry-content__wrap-group__right__banner">
-					<img src="https://adtima-media-td.zadn.vn/2018/06/6ca7dc8f-a44f-4904-ba87-84056a510774/Right.png"/>
-				</div>
+				<a href="{{{ $bannerblog->url or '' }}}" class="entry-content__wrap-group__right__banner">
+					<br>
+					@if(isset($bannerblog->images))
+					<img src="{{Voyager::image($bannerblog->images)}}" style="max-width:240px"/>
+					@endif
+				</a>
 			</div>
 		</section>
 	</div>

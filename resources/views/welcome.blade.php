@@ -3,7 +3,6 @@
 <title>Nội Thất Tích Hợp</title>
 @endsection
 @section('content')
-<br>
 <header class="site-header wide" id="header" style="background-image: url('{{Voyager::image($info_one->images)}}')">
 	<div id="static-area-header-top">
 		<div class="container">

@@ -34,6 +34,12 @@
 		</div>
 	</div>
 	<div class="container">
+		<div class="logo-mobile">
+			<a class="logo-mobile__image" href="http://www.facebook.com/" target="_self">
+				<img src="{{Voyager::image('logo.png')}}" alt=""/>
+			</a>
+			<img src="https://image.flaticon.com/icons/svg/109/109727.svg" alt="" width="32" class="button-menu">
+		</div>
 		<ul class="header-menu flex">
 			<li class="header-menu__item">
 				<a href="{{ URL::to('/')}}"class="header-menu__item__name">Trang Chủ</a>
