@@ -2,22 +2,22 @@
 
 // DataTable translations from: https://github.com/DataTables/Plugins/tree/master/i18n
 return [
-    'sEmptyTable'     => 'No data available in table',
-    'sInfo'           => 'Showing _START_ to _END_ of _TOTAL_ entries',
-    'sInfoEmpty'      => 'Showing 0 to 0 of 0 entries',
-    'sInfoFiltered'   => '(filtered from _MAX_ total entries)',
+    'sEmptyTable'     => 'Không có dữ liệu',
+    'sInfo'           => 'Hiển thị _START_ to _END_ of _TOTAL_ hàng',
+    'sInfoEmpty'      => 'Hiển thị 0 to 0 of 0 hàng',
+    'sInfoFiltered'   => '(filtered from _MAX_ total hàng)',
     'sInfoPostFix'    => '',
     'sInfoThousands'  => ',',
-    'sLengthMenu'     => 'Show _MENU_ entries',
+    'sLengthMenu'     => 'Hiển thị _MENU_ hàng',
     'sLoadingRecords' => 'Loading...',
     'sProcessing'     => 'Processing...',
-    'sSearch'         => 'Search:',
-    'sZeroRecords'    => 'No matching records found',
+    'sSearch'         => 'Tìm kiếm:',
+    'sZeroRecords'    => 'Không tìm thấy',
     'oPaginate'       => [
-        'sFirst'    => 'First',
-        'sLast'     => 'Last',
-        'sNext'     => 'Next',
-        'sPrevious' => 'Previous',
+        'sFirst'    => 'Đầu tiên',
+        'sLast'     => 'Cuối cùng',
+        'sNext'     => 'Tiếp',
+        'sPrevious' => 'Sau',
     ],
     'oAria' => [
         'sSortAscending'  => ': activate to sort column ascending',

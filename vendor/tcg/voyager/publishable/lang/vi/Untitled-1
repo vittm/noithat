@@ -1,0 +1,1409 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.7
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Jul 06, 2018 at 12:44 AM
+-- Server version: 5.6.38
+-- PHP Version: 7.2.1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `adarim`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `banners`
+--
+
+CREATE TABLE `banners` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `images` text COLLATE utf8_unicode_ci,
+  `text` text COLLATE utf8_unicode_ci,
+  `show` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url` text COLLATE utf8_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `banners`
+--
+
+INSERT INTO `banners` (`id`, `images`, `text`, `show`, `created_at`, `updated_at`, `name`, `url`) VALUES
+(1, 'banners/July2018/r4XhF3wyNzrfiC9P9N1X.jpg', NULL, '1', '2018-07-01 00:37:00', '2018-07-01 00:52:04', 'banner-blog', NULL),
+(2, NULL, '<p><img src=\"https://vcdn.tikicdn.com/ts/banner/3e/5c/c3/ada701b3dc53c984a3a5de189c79f3ec.jpg\" alt=\"\" width=\"1170\" height=\"726\" /></p>', '1', '2018-07-01 00:38:00', '2018-07-01 00:38:46', 'banner-home', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `parent_id` int(10) UNSIGNED DEFAULT NULL,
+  `order` int(11) NOT NULL DEFAULT '1',
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `images` text COLLATE utf8mb4_unicode_ci,
+  `hot` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_at`, `updated_at`, `images`, `hot`) VALUES
+(13, NULL, 1, 'Phong Cách Nội Thất', 'phong-cach', '2018-06-30 07:43:42', '2018-06-30 07:50:42', NULL, NULL),
+(14, NULL, 1, 'Dự Án', 'du-an', '2018-06-30 07:44:06', '2018-06-30 07:44:06', NULL, NULL),
+(15, NULL, 1, 'Tin Tức', 'tin-tuc', '2018-06-30 07:44:30', '2018-06-30 07:44:30', NULL, NULL),
+(16, NULL, 1, 'Tuyển Dụng', 'tuyen-dung', '2018-06-30 07:44:42', '2018-06-30 07:44:42', NULL, NULL),
+(17, NULL, 1, 'Liên Hệ', 'lien-he', '2018-06-30 07:44:50', '2018-06-30 07:44:50', NULL, NULL),
+(19, 13, 1, 'Phong Cách Hiện Tại', 'phong-cach-hien-tai', '2018-06-30 08:10:58', '2018-06-30 11:26:16', 'categories/June2018/eXzHUeJ8Ug1B5vPo3aBz.jpeg', 1),
+(20, 13, 1, 'Phong Cách Bán Cổ Điển', 'phong-cach-ban-co-dien', '2018-06-30 08:13:02', '2018-06-30 11:04:11', 'categories/June2018/dvs8HH1Q4AtZxwT4XWkH.jpeg', 1),
+(21, 13, 1, 'Phong Cách Cổ Điển', 'phong-cach-co-dien', '2018-06-30 08:13:17', '2018-06-30 11:03:51', 'categories/June2018/xKvHauEDhdEUIB8IXwJv.jpg', 1),
+(22, 13, 1, 'Sản Phẩm', 'san-pham', '2018-06-30 08:13:44', '2018-06-30 11:03:35', 'categories/June2018/vUIz7i6xcYs6vCmj7Kgb.jpeg', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clips`
+--
+
+CREATE TABLE `clips` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `text1` text COLLATE utf8_unicode_ci,
+  `text2` text COLLATE utf8_unicode_ci,
+  `text3` text COLLATE utf8_unicode_ci,
+  `video` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `background` text COLLATE utf8_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `clips`
+--
+
+INSERT INTO `clips` (`id`, `text1`, `text2`, `text3`, `video`, `created_at`, `updated_at`, `background`) VALUES
+(1, 'USING INNOVATIVE EQUIPMENT', 'TO REDUCE TIME AND ENERGY IN FARMING', 'Xem Thêm', '7HFgARtEw7s', '2018-06-30 09:17:00', '2018-06-30 23:14:58', 'clips/July2018/Lt2WcaeTgNdjpprDeXRI.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `name`, `phone`, `email`, `content`, `created_at`, `updated_at`) VALUES
+(1, 'a', '23123', 'ád2131', '123123', NULL, NULL),
+(2, 'DSADHAS', '01674644053', 'kanbi1995@gmail.com', 'sdfdfdsf', '2018-07-01 11:01:53', '2018-07-01 11:01:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_rows`
+--
+
+CREATE TABLE `data_rows` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `data_type_id` int(10) UNSIGNED NOT NULL,
+  `field` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `required` tinyint(1) NOT NULL DEFAULT '0',
+  `browse` tinyint(1) NOT NULL DEFAULT '1',
+  `read` tinyint(1) NOT NULL DEFAULT '1',
+  `edit` tinyint(1) NOT NULL DEFAULT '1',
+  `add` tinyint(1) NOT NULL DEFAULT '1',
+  `delete` tinyint(1) NOT NULL DEFAULT '1',
+  `details` text COLLATE utf8mb4_unicode_ci,
+  `order` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `data_rows`
+--
+
+INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, `required`, `browse`, `read`, `edit`, `add`, `delete`, `details`, `order`) VALUES
+(1, 1, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, NULL, 1),
+(2, 1, 'author_id', 'text', 'Author', 1, 0, 1, 1, 0, 1, NULL, 2),
+(3, 1, 'category_id', 'text', 'Category', 0, 0, 1, 1, 1, 0, NULL, 3),
+(4, 1, 'title', 'text', 'Title', 1, 1, 1, 1, 1, 1, NULL, 4),
+(5, 1, 'excerpt', 'text_area', 'excerpt', 0, 0, 1, 1, 1, 1, NULL, 5),
+(6, 1, 'body', 'rich_text_box', 'Body', 1, 0, 1, 1, 1, 1, NULL, 6),
+(7, 1, 'image', 'image', 'Post Image', 0, 1, 1, 1, 1, 1, '{\"resize\":{\"width\":\"1000\",\"height\":\"null\"},\"quality\":\"70%\",\"upsize\":true,\"thumbnails\":[{\"name\":\"medium\",\"scale\":\"50%\"},{\"name\":\"small\",\"scale\":\"25%\"},{\"name\":\"cropped\",\"crop\":{\"width\":\"300\",\"height\":\"250\"}}]}', 7),
+(8, 1, 'slug', 'text', 'slug', 1, 0, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"title\",\"forceUpdate\":true}}', 8),
+(9, 1, 'meta_description', 'text_area', 'meta_description', 0, 0, 1, 1, 1, 1, NULL, 9),
+(10, 1, 'meta_keywords', 'text_area', 'meta_keywords', 0, 0, 1, 1, 1, 1, NULL, 10),
+(11, 1, 'status', 'select_dropdown', 'status', 1, 1, 1, 1, 1, 1, '{\"default\":\"DRAFT\",\"options\":{\"PUBLISHED\":\"published\",\"DRAFT\":\"draft\",\"PENDING\":\"pending\"}}', 11),
+(12, 1, 'created_at', 'timestamp', 'created_at', 0, 1, 1, 0, 0, 0, NULL, 12),
+(13, 1, 'updated_at', 'timestamp', 'updated_at', 0, 0, 0, 0, 0, 0, NULL, 13),
+(14, 2, 'id', 'number', 'id', 1, 0, 0, 0, 0, 0, '', 1),
+(15, 2, 'author_id', 'text', 'author_id', 1, 0, 0, 0, 0, 0, '', 2),
+(16, 2, 'title', 'text', 'title', 1, 1, 1, 1, 1, 1, '', 3),
+(17, 2, 'excerpt', 'text_area', 'excerpt', 1, 0, 1, 1, 1, 1, '', 4),
+(18, 2, 'body', 'rich_text_box', 'body', 1, 0, 1, 1, 1, 1, '', 5),
+(19, 2, 'slug', 'text', 'slug', 1, 0, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"title\"}}', 6),
+(20, 2, 'meta_description', 'text', 'meta_description', 1, 0, 1, 1, 1, 1, '', 7),
+(21, 2, 'meta_keywords', 'text', 'meta_keywords', 1, 0, 1, 1, 1, 1, '', 8),
+(22, 2, 'status', 'select_dropdown', 'status', 1, 1, 1, 1, 1, 1, '{\"default\":\"INACTIVE\",\"options\":{\"INACTIVE\":\"INACTIVE\",\"ACTIVE\":\"ACTIVE\"}}', 9),
+(23, 2, 'created_at', 'timestamp', 'created_at', 1, 1, 1, 0, 0, 0, '', 10),
+(24, 2, 'updated_at', 'timestamp', 'updated_at', 1, 0, 0, 0, 0, 0, '', 11),
+(25, 2, 'image', 'image', 'image', 0, 1, 1, 1, 1, 1, '', 12),
+(26, 3, 'id', 'number', 'id', 1, 0, 0, 0, 0, 0, '', 1),
+(27, 3, 'name', 'text', 'name', 1, 1, 1, 1, 1, 1, '', 2),
+(28, 3, 'email', 'text', 'email', 1, 1, 1, 1, 1, 1, '', 3),
+(29, 3, 'password', 'password', 'password', 0, 0, 0, 1, 1, 0, '', 4),
+(30, 3, 'user_belongsto_role_relationship', 'relationship', 'Role', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsTo\",\"column\":\"role_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"roles\",\"pivot\":\"0\"}', 10),
+(31, 3, 'remember_token', 'text', 'remember_token', 0, 0, 0, 0, 0, 0, '', 5),
+(32, 3, 'created_at', 'timestamp', 'created_at', 0, 1, 1, 0, 0, 0, '', 6),
+(33, 3, 'updated_at', 'timestamp', 'updated_at', 0, 0, 0, 0, 0, 0, '', 7),
+(34, 3, 'avatar', 'image', 'avatar', 0, 1, 1, 1, 1, 1, '', 8),
+(35, 5, 'id', 'number', 'id', 1, 0, 0, 0, 0, 0, '', 1),
+(36, 5, 'name', 'text', 'name', 1, 1, 1, 1, 1, 1, '', 2),
+(37, 5, 'created_at', 'timestamp', 'created_at', 0, 0, 0, 0, 0, 0, '', 3),
+(38, 5, 'updated_at', 'timestamp', 'updated_at', 0, 0, 0, 0, 0, 0, '', 4),
+(39, 4, 'id', 'number', 'id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(40, 4, 'parent_id', 'select_dropdown', 'parent_id', 0, 0, 1, 1, 1, 1, '{\"default\":\"\",\"null\":\"\",\"options\":{\"\":\"-- None --\"},\"relationship\":{\"key\":\"id\",\"label\":\"name\"}}', 2),
+(41, 4, 'order', 'text', 'order', 1, 1, 1, 1, 1, 1, '{\"default\":1}', 3),
+(42, 4, 'name', 'text', 'name', 1, 1, 1, 1, 1, 1, NULL, 4),
+(43, 4, 'slug', 'text', 'slug', 1, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"name\"}}', 5),
+(44, 4, 'created_at', 'timestamp', 'created_at', 0, 0, 1, 0, 0, 0, NULL, 6),
+(45, 4, 'updated_at', 'timestamp', 'updated_at', 0, 0, 0, 0, 0, 0, NULL, 7),
+(46, 6, 'id', 'number', 'id', 1, 0, 0, 0, 0, 0, '', 1),
+(47, 6, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, '', 2),
+(48, 6, 'created_at', 'timestamp', 'created_at', 0, 0, 0, 0, 0, 0, '', 3),
+(49, 6, 'updated_at', 'timestamp', 'updated_at', 0, 0, 0, 0, 0, 0, '', 4),
+(50, 6, 'display_name', 'text', 'Display Name', 1, 1, 1, 1, 1, 1, '', 5),
+(51, 1, 'seo_title', 'text', 'seo_title', 0, 1, 1, 1, 1, 1, NULL, 14),
+(52, 1, 'featured', 'checkbox', 'featured', 1, 1, 1, 1, 1, 1, NULL, 15),
+(53, 3, 'role_id', 'text', 'role_id', 1, 1, 1, 1, 1, 1, '', 9),
+(54, 3, 'user_belongstomany_role_relationship', 'relationship', 'Roles', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsToMany\",\"column\":\"id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"user_roles\",\"pivot\":\"1\",\"taggable\":\"0\"}', 11),
+(55, 3, 'locale', 'text', 'Locale', 0, 1, 1, 1, 1, 0, '', 12),
+(56, 3, 'settings', 'hidden', 'Settings', 0, 0, 0, 0, 0, 0, '', 12),
+(57, 7, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(58, 7, 'images', 'image', 'Images', 0, 1, 1, 1, 1, 1, NULL, 2),
+(59, 7, 'created_at', 'timestamp', 'Created At', 0, 0, 1, 1, 0, 1, NULL, 3),
+(60, 7, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 4),
+(62, 8, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(63, 8, 'category_id', 'text', 'Category Id', 0, 1, 1, 1, 1, 1, NULL, 2),
+(64, 8, 'created_at', 'timestamp', 'Created At', 0, 0, 1, 1, 0, 1, NULL, 3),
+(65, 8, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 4),
+(66, 8, 'menuhome_belongsto_category_relationship', 'relationship', 'categories', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Category\",\"table\":\"categories\",\"type\":\"belongsTo\",\"column\":\"category_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 5),
+(67, 9, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(68, 9, 'post_id', 'text', 'Post Id', 0, 1, 1, 1, 1, 1, NULL, 2),
+(69, 9, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 3),
+(70, 9, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 4),
+(71, 9, 'special_belongsto_post_relationship', 'relationship', 'posts', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Post\",\"table\":\"posts\",\"type\":\"belongsTo\",\"column\":\"post_id\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":null}', 5),
+(72, 4, 'images', 'image', 'Images', 0, 1, 1, 1, 1, 1, NULL, 8),
+(75, 7, 'text1', 'text', 'Dòng 1', 0, 1, 1, 1, 1, 1, NULL, 5),
+(76, 7, 'text2', 'text', 'Dòng 2', 0, 1, 1, 1, 1, 1, NULL, 6),
+(77, 7, 'text3', 'text', 'Dòng 3', 0, 1, 1, 1, 1, 1, NULL, 7),
+(78, 7, 'text4', 'text', 'Nút', 0, 1, 1, 1, 1, 1, NULL, 8),
+(79, 10, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(80, 10, 'text1', 'text', 'Dòng 1', 0, 1, 1, 1, 1, 1, NULL, 2),
+(81, 10, 'text2', 'text_area', 'Dòng 2', 0, 1, 1, 1, 1, 1, NULL, 3),
+(82, 10, 'text', 'text', 'Dòng', 0, 1, 1, 1, 1, 1, NULL, 4),
+(83, 10, 'text3', 'text', 'Nút', 0, 1, 1, 1, 1, 1, NULL, 5),
+(84, 10, 'created_at', 'timestamp', 'Created At', 0, 0, 1, 1, 0, 1, NULL, 6),
+(85, 10, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 7),
+(86, 11, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(87, 11, 'images', 'text', 'Images', 0, 1, 1, 1, 1, 1, NULL, 2),
+(88, 11, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, NULL, 3),
+(89, 11, 'content', 'text', 'Content', 0, 1, 1, 1, 1, 1, NULL, 4),
+(90, 11, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 5),
+(91, 11, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 6),
+(92, 12, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(93, 12, 'images', 'image', 'Images', 0, 1, 1, 1, 1, 1, NULL, 2),
+(94, 12, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, NULL, 3),
+(95, 12, 'content', 'text', 'Content', 0, 1, 1, 1, 1, 1, NULL, 4),
+(96, 12, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 5),
+(97, 12, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 6),
+(98, 17, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(99, 17, 'text1', 'text', 'Dòng 1', 0, 1, 1, 1, 1, 1, NULL, 2),
+(100, 17, 'text2', 'text', 'Dòng 2', 0, 1, 1, 1, 1, 1, NULL, 3),
+(101, 17, 'text3', 'text', 'Nút', 0, 1, 1, 1, 1, 1, NULL, 4),
+(102, 17, 'video', 'text', 'Video', 0, 1, 1, 1, 1, 1, NULL, 5),
+(103, 17, 'created_at', 'timestamp', 'Created At', 0, 0, 1, 1, 0, 1, NULL, 6),
+(104, 17, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 7),
+(105, 18, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(106, 18, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, NULL, 2),
+(107, 18, 'content', 'text_area', 'Content', 0, 1, 1, 1, 1, 1, NULL, 3),
+(108, 18, 'images', 'image', 'Images', 0, 1, 1, 1, 1, 1, NULL, 4),
+(110, 18, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 6),
+(111, 18, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 7),
+(112, 18, 'type_belongsto_category_relationship', 'relationship', 'Thể loại', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Category\",\"table\":\"categories\",\"type\":\"belongsTo\",\"column\":\"category_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 8),
+(113, 18, 'category_id', 'text', 'Thể loại', 0, 1, 1, 1, 1, 1, NULL, 8),
+(114, 4, 'hot', 'checkbox', 'Hot', 0, 1, 1, 1, 1, 1, NULL, 9),
+(116, 19, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(117, 19, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, NULL, 2),
+(118, 19, 'images', 'image', 'Images', 0, 1, 1, 1, 1, 1, NULL, 3),
+(119, 19, 'video', 'text', 'Video', 0, 1, 1, 1, 1, 1, NULL, 4),
+(120, 19, 'created_at', 'timestamp', 'Created At', 0, 0, 1, 1, 0, 1, NULL, 5),
+(121, 19, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 6),
+(122, 19, 'hot', 'checkbox', 'Hot', 0, 1, 1, 1, 1, 1, NULL, 7),
+(124, 1, 'hot', 'checkbox', 'Hot', 1, 1, 1, 1, 1, 1, NULL, 14),
+(125, 17, 'background', 'image', 'Hình nền', 0, 1, 1, 1, 1, 1, NULL, 8),
+(126, 20, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(127, 20, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, NULL, 2),
+(128, 20, 'phone', 'text', 'Phone', 0, 1, 1, 1, 1, 1, NULL, 3),
+(129, 20, 'email', 'text', 'Email', 0, 1, 1, 1, 1, 1, NULL, 4),
+(130, 20, 'content', 'text', 'Content', 0, 1, 1, 1, 1, 1, NULL, 5),
+(131, 20, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 6),
+(132, 20, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 7),
+(133, 21, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(134, 21, 'textfooter', 'text', 'Textfooter', 0, 1, 1, 1, 1, 1, NULL, 2),
+(135, 21, 'phone', 'text', 'Phone', 0, 1, 1, 1, 1, 1, NULL, 3),
+(136, 21, 'email', 'text', 'Email', 0, 1, 1, 1, 1, 1, NULL, 4),
+(137, 21, 'address', 'text', 'Address', 0, 1, 1, 1, 1, 1, NULL, 5),
+(138, 21, 'text', 'text', 'Text', 0, 1, 1, 1, 1, 1, NULL, 6),
+(139, 21, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 7),
+(140, 21, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 8),
+(141, 21, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, NULL, 9),
+(142, 22, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(143, 22, 'images', 'image', 'Images', 0, 1, 1, 1, 1, 1, NULL, 2),
+(144, 22, 'text', 'rich_text_box', 'Text', 0, 1, 1, 1, 1, 1, NULL, 3),
+(145, 22, 'show', 'checkbox', 'Show', 0, 1, 1, 1, 1, 1, NULL, 4),
+(146, 22, 'created_at', 'timestamp', 'Created At', 0, 0, 1, 1, 0, 1, NULL, 5),
+(147, 22, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 6),
+(148, 22, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, NULL, 7),
+(149, 22, 'url', 'text', 'Url', 0, 1, 1, 1, 1, 1, NULL, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_types`
+--
+
+CREATE TABLE `data_types` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name_singular` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name_plural` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `icon` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `model_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `policy_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `controller` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `generate_permissions` tinyint(1) NOT NULL DEFAULT '0',
+  `server_side` tinyint(4) NOT NULL DEFAULT '0',
+  `details` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `data_types`
+--
+
+INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `display_name_plural`, `icon`, `model_name`, `policy_name`, `controller`, `description`, `generate_permissions`, `server_side`, `details`, `created_at`, `updated_at`) VALUES
+(1, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-03-11 23:49:32', '2018-05-30 08:33:19'),
+(2, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2018-03-11 23:49:32', '2018-03-11 23:49:32'),
+(3, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', '', '', 1, 0, NULL, '2018-03-11 23:49:32', '2018-03-11 23:49:32'),
+(4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-03-11 23:49:32', '2018-05-27 12:39:56'),
+(5, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, NULL, '2018-03-11 23:49:32', '2018-03-11 23:49:32'),
+(6, 'roles', 'roles', 'Role', 'Roles', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, '', '', 1, 0, NULL, '2018-03-11 23:49:32', '2018-03-11 23:49:32'),
+(7, 'sliders', 'sliders', 'Giới Thiệu 1', 'Giới Thiệu 1', 'voyager-photos', 'App\\Slider', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-05-27 10:16:42', '2018-06-30 08:36:20'),
+(8, 'menuhomes', 'menuhomes', 'Menu Trang Chủ', 'Menu Trang Chủ', 'voyager-list', 'App\\Menuhome', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-05-27 10:44:40', '2018-05-27 10:47:23'),
+(9, 'specials', 'specials', 'Special', 'Specials', 'voyager-star-two', 'App\\Special', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-05-27 11:59:13', '2018-05-27 11:59:13'),
+(10, 'infos', 'infos', 'Giới Thiệu 2', 'Giới Thiệu 2', 'voyager-documentation', 'App\\Info', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-06-30 08:49:43', '2018-06-30 08:49:43'),
+(11, 'process', 'process', 'Process', 'Processes', NULL, 'App\\Process', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-06-30 08:57:02', '2018-06-30 08:57:02'),
+(12, 'processes', 'processes', 'Process', 'Processes', 'voyager-pie-chart', 'App\\Process', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-06-30 08:58:29', '2018-06-30 09:08:27'),
+(17, 'clips', 'clips', 'Clip', 'Clips', 'voyager-video', 'App\\Clip', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-06-30 09:16:28', '2018-06-30 09:16:28'),
+(18, 'types', 'types', 'Phong Cách', 'Phong Cách', 'voyager-brush', 'App\\Type', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-06-30 09:30:59', '2018-06-30 09:30:59'),
+(19, 'projects', 'projects', 'Dự án', 'Dự án', 'voyager-archive', 'App\\Project', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-06-30 11:36:43', '2018-06-30 11:36:43'),
+(20, 'contacts', 'contacts', 'Liên Hệ', 'Liên Hệ', 'voyager-question', 'App\\Contact', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-06-30 23:27:12', '2018-06-30 23:27:12'),
+(21, 'editcontacts', 'editcontacts', 'Thông Tin', 'Thông Tin', 'voyager-book-download', 'App\\Editcontact', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-06-30 23:30:35', '2018-06-30 23:30:35'),
+(22, 'banners', 'banners', 'Banner', 'Banners', 'voyager-leaf', 'App\\Banner', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-07-01 00:35:35', '2018-07-01 00:35:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `editcontacts`
+--
+
+CREATE TABLE `editcontacts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `textfooter` text COLLATE utf8_unicode_ci,
+  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `text` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `image` text COLLATE utf8_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `editcontacts`
+--
+
+INSERT INTO `editcontacts` (`id`, `textfooter`, `phone`, `email`, `address`, `text`, `created_at`, `updated_at`, `image`) VALUES
+(1, 'Trên hết, chúng tôi mong muốn đem đến cho các khách hàng, đối tác của mình những sản phẩm, dịch vụ với chất lượng vượt trội. Chọn chúng tôi, bạn hoàn toàn có thể yên tâm từ khi thiết kế đến lúc nhận nhà.', '(+84) 86 889 1253', 'hi@noithattichhop.vn', '05 Hàm Nghi, phường Nguyễn Thái Bình, Quận 1, TP Hồ Chí Minh', 'orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2018-06-30 23:32:00', '2018-07-01 00:14:32', 'editcontacts/July2018/opYKaA6mYRByJjKfKjS6.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `infos`
+--
+
+CREATE TABLE `infos` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `text1` text COLLATE utf8_unicode_ci,
+  `text2` text COLLATE utf8_unicode_ci,
+  `text` text COLLATE utf8_unicode_ci,
+  `text3` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `infos`
+--
+
+INSERT INTO `infos` (`id`, `text1`, `text2`, `text`, `text3`, `created_at`, `updated_at`) VALUES
+(1, 'AMONG AGRICULTURAL COMPANIES', 'We are prominent leader in the agribusiness; specializing in the cultivation, production and trading of animal feed and essential human food commodities such as corn, fruits, flour and vegetables. Since its inception, we have witnessed unmatched growth fuelled by an active foreign investment strategy, establishing various acquisitions and joint ventures with specialized feed and food producers worldwide. We own and operate a large asset base including a land bank of 340 thousand acres, 4 forage pressing and production plants and 2 flour milling plants.', 'A REMARKABLE POSITION', 'ĐỌC TIẾP', '2018-06-30 08:52:53', '2018-06-30 08:52:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menus`
+--
+
+CREATE TABLE `menus` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `menus`
+--
+
+INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'admin', '2018-03-11 23:49:34', '2018-03-11 23:49:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu_items`
+--
+
+CREATE TABLE `menu_items` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `menu_id` int(10) UNSIGNED DEFAULT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `target` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '_self',
+  `icon_class` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `color` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `order` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `route` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `parameters` text COLLATE utf8mb4_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `menu_items`
+--
+
+INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
+(1, 1, 'Điều Khiển', '', '_self', 'voyager-boat', NULL, NULL, 1, '2018-03-11 23:49:34', '2018-03-11 23:49:34', 'voyager.dashboard', NULL),
+(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 5, '2018-03-11 23:49:34', '2018-03-11 23:49:34', 'voyager.media.index', NULL),
+(3, 1, 'Bài Viết', '', '_self', 'voyager-news', NULL, NULL, 6, '2018-03-11 23:49:35', '2018-03-11 23:49:35', 'voyager.posts.index', NULL),
+(4, 1, 'Users', '', '_self', 'voyager-person', NULL, NULL, 3, '2018-03-11 23:49:35', '2018-03-11 23:49:35', 'voyager.users.index', NULL),
+(5, 1, 'Thể Loại', '', '_self', 'voyager-categories', NULL, NULL, 8, '2018-03-11 23:49:35', '2018-03-11 23:49:35', 'voyager.categories.index', NULL),
+(7, 1, 'Roles', '', '_self', 'voyager-lock', NULL, NULL, 2, '2018-03-11 23:49:35', '2018-03-11 23:49:35', 'voyager.roles.index', NULL),
+(8, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 9, '2018-03-11 23:49:35', '2018-03-11 23:49:35', NULL, NULL),
+(9, 1, 'Menu Builder', '', '_self', 'voyager-list', NULL, 8, 10, '2018-03-11 23:49:35', '2018-03-11 23:49:35', 'voyager.menus.index', NULL),
+(10, 1, 'Database', '', '_self', 'voyager-data', NULL, 8, 11, '2018-03-11 23:49:35', '2018-03-11 23:49:35', 'voyager.database.index', NULL),
+(11, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 8, 12, '2018-03-11 23:49:35', '2018-03-11 23:49:35', 'voyager.compass.index', NULL),
+(12, 1, 'Cài Đặt', '', '_self', 'voyager-settings', NULL, NULL, 14, '2018-03-11 23:49:35', '2018-03-11 23:49:35', 'voyager.settings.index', NULL),
+(13, 1, 'Hooks', '', '_self', 'voyager-hook', NULL, 8, 13, '2018-03-11 23:49:40', '2018-03-11 23:49:40', 'voyager.hooks', NULL),
+(14, 1, 'BREAD', '', '_self', 'voyager-bread', NULL, 8, 13, '2018-05-27 10:02:40', '2018-05-27 10:02:40', 'voyager.bread.index', NULL),
+(15, 1, 'Giới Thiệu 1', '', '_self', 'voyager-photos', NULL, NULL, 15, '2018-05-27 10:16:43', '2018-05-27 10:16:43', 'voyager.sliders.index', NULL),
+(18, 1, 'Giới Thiệu 2', '', '_self', 'voyager-documentation', NULL, NULL, 18, '2018-06-30 08:49:43', '2018-06-30 08:49:43', 'voyager.infos.index', NULL),
+(20, 1, 'Quá Trình', '', '_self', 'voyager-pie-chart', NULL, NULL, 20, '2018-06-30 08:58:29', '2018-06-30 08:58:29', 'voyager.processes.index', NULL),
+(21, 1, 'Clips', '', '_self', 'voyager-video', NULL, NULL, 21, '2018-06-30 09:16:28', '2018-06-30 09:16:28', 'voyager.clips.index', NULL),
+(22, 1, 'Phong Cách', '', '_self', 'voyager-brush', NULL, NULL, 22, '2018-06-30 09:30:59', '2018-06-30 09:30:59', 'voyager.types.index', NULL),
+(23, 1, 'Dự án', '', '_self', 'voyager-archive', NULL, NULL, 23, '2018-06-30 11:36:43', '2018-06-30 11:36:43', 'voyager.projects.index', NULL),
+(24, 1, 'Liên Hệ', '', '_self', 'voyager-question', NULL, NULL, 24, '2018-06-30 23:27:12', '2018-06-30 23:27:12', 'voyager.contacts.index', NULL),
+(25, 1, 'Thông Tin', '', '_self', 'voyager-book-download', NULL, NULL, 25, '2018-06-30 23:30:35', '2018-06-30 23:30:35', 'voyager.editcontacts.index', NULL),
+(26, 1, 'Banners', '', '_self', 'voyager-leaf', NULL, NULL, 26, '2018-07-01 00:35:35', '2018-07-01 00:35:35', 'voyager.banners.index', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2016_01_01_000000_add_voyager_user_fields', 1),
+(4, '2016_01_01_000000_create_data_types_table', 1),
+(5, '2016_01_01_000000_create_pages_table', 1),
+(6, '2016_01_01_000000_create_posts_table', 1),
+(7, '2016_02_15_204651_create_categories_table', 1),
+(8, '2016_05_19_173453_create_menu_table', 1),
+(9, '2016_10_21_190000_create_roles_table', 1),
+(10, '2016_10_21_190000_create_settings_table', 1),
+(11, '2016_11_30_135954_create_permission_table', 1),
+(12, '2016_11_30_141208_create_permission_role_table', 1),
+(13, '2016_12_26_201236_data_types__add__server_side', 1),
+(14, '2017_01_13_000000_add_route_to_menu_items_table', 1),
+(15, '2017_01_14_005015_create_translations_table', 1),
+(16, '2017_01_15_000000_add_permission_group_id_to_permissions_table', 1),
+(17, '2017_01_15_000000_create_permission_groups_table', 1),
+(18, '2017_01_15_000000_make_table_name_nullable_in_permissions_table', 1),
+(19, '2017_03_06_000000_add_controller_to_data_types_table', 1),
+(20, '2017_04_11_000000_alter_post_nullable_fields_table', 1),
+(21, '2017_04_21_000000_add_order_to_data_rows_table', 1),
+(22, '2017_07_05_210000_add_policyname_to_data_types_table', 1),
+(23, '2017_08_05_000000_add_group_to_settings_table', 1),
+(24, '2017_11_26_013050_add_user_role_relationship', 2),
+(25, '2017_11_26_015000_create_user_roles_table', 2),
+(26, '2018_03_11_000000_add_user_settings', 2),
+(27, '2018_03_14_000000_add_details_to_data_types_table', 2),
+(28, '2018_03_16_000000_make_settings_value_nullable', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pages`
+--
+
+CREATE TABLE `pages` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `excerpt` text COLLATE utf8mb4_unicode_ci,
+  `body` mediumtext COLLATE utf8mb4_unicode_ci,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci,
+  `meta_keywords` text COLLATE utf8mb4_unicode_ci,
+  `status` enum('ACTIVE','INACTIVE') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'INACTIVE',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `key` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `table_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `permission_group_id` int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`, `permission_group_id`) VALUES
+(1, 'browse_admin', NULL, '2018-03-11 23:49:35', '2018-03-11 23:49:35', NULL),
+(2, 'browse_database', NULL, '2018-03-11 23:49:35', '2018-03-11 23:49:35', NULL),
+(3, 'browse_media', NULL, '2018-03-11 23:49:35', '2018-03-11 23:49:35', NULL),
+(4, 'browse_compass', NULL, '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(5, 'browse_menus', 'menus', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(6, 'read_menus', 'menus', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(7, 'edit_menus', 'menus', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(8, 'add_menus', 'menus', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(9, 'delete_menus', 'menus', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(10, 'browse_pages', 'pages', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(11, 'read_pages', 'pages', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(12, 'edit_pages', 'pages', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(13, 'add_pages', 'pages', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(14, 'delete_pages', 'pages', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(15, 'browse_roles', 'roles', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(16, 'read_roles', 'roles', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(17, 'edit_roles', 'roles', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(18, 'add_roles', 'roles', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(19, 'delete_roles', 'roles', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(20, 'browse_users', 'users', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(21, 'read_users', 'users', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(22, 'edit_users', 'users', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(23, 'add_users', 'users', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(24, 'delete_users', 'users', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(25, 'browse_posts', 'posts', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(26, 'read_posts', 'posts', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(27, 'edit_posts', 'posts', '2018-03-11 23:49:36', '2018-03-11 23:49:36', NULL),
+(28, 'add_posts', 'posts', '2018-03-11 23:49:37', '2018-03-11 23:49:37', NULL),
+(29, 'delete_posts', 'posts', '2018-03-11 23:49:37', '2018-03-11 23:49:37', NULL),
+(30, 'browse_categories', 'categories', '2018-03-11 23:49:37', '2018-03-11 23:49:37', NULL),
+(31, 'read_categories', 'categories', '2018-03-11 23:49:37', '2018-03-11 23:49:37', NULL),
+(32, 'edit_categories', 'categories', '2018-03-11 23:49:37', '2018-03-11 23:49:37', NULL),
+(33, 'add_categories', 'categories', '2018-03-11 23:49:37', '2018-03-11 23:49:37', NULL),
+(34, 'delete_categories', 'categories', '2018-03-11 23:49:37', '2018-03-11 23:49:37', NULL),
+(35, 'browse_settings', 'settings', '2018-03-11 23:49:37', '2018-03-11 23:49:37', NULL),
+(36, 'read_settings', 'settings', '2018-03-11 23:49:37', '2018-03-11 23:49:37', NULL),
+(37, 'edit_settings', 'settings', '2018-03-11 23:49:37', '2018-03-11 23:49:37', NULL),
+(38, 'add_settings', 'settings', '2018-03-11 23:49:37', '2018-03-11 23:49:37', NULL),
+(39, 'delete_settings', 'settings', '2018-03-11 23:49:37', '2018-03-11 23:49:37', NULL),
+(40, 'browse_hooks', NULL, '2018-03-11 23:49:40', '2018-03-11 23:49:40', NULL),
+(41, 'browse_bread', NULL, '2018-05-27 10:02:40', '2018-05-27 10:02:40', NULL),
+(42, 'browse_sliders', 'sliders', '2018-05-27 10:16:43', '2018-05-27 10:16:43', NULL),
+(43, 'read_sliders', 'sliders', '2018-05-27 10:16:43', '2018-05-27 10:16:43', NULL),
+(44, 'edit_sliders', 'sliders', '2018-05-27 10:16:43', '2018-05-27 10:16:43', NULL),
+(45, 'add_sliders', 'sliders', '2018-05-27 10:16:43', '2018-05-27 10:16:43', NULL),
+(46, 'delete_sliders', 'sliders', '2018-05-27 10:16:43', '2018-05-27 10:16:43', NULL),
+(47, 'browse_menuhomes', 'menuhomes', '2018-05-27 10:44:40', '2018-05-27 10:44:40', NULL),
+(48, 'read_menuhomes', 'menuhomes', '2018-05-27 10:44:40', '2018-05-27 10:44:40', NULL),
+(49, 'edit_menuhomes', 'menuhomes', '2018-05-27 10:44:40', '2018-05-27 10:44:40', NULL),
+(50, 'add_menuhomes', 'menuhomes', '2018-05-27 10:44:40', '2018-05-27 10:44:40', NULL),
+(51, 'delete_menuhomes', 'menuhomes', '2018-05-27 10:44:40', '2018-05-27 10:44:40', NULL),
+(52, 'browse_specials', 'specials', '2018-05-27 11:59:13', '2018-05-27 11:59:13', NULL),
+(53, 'read_specials', 'specials', '2018-05-27 11:59:13', '2018-05-27 11:59:13', NULL),
+(54, 'edit_specials', 'specials', '2018-05-27 11:59:13', '2018-05-27 11:59:13', NULL),
+(55, 'add_specials', 'specials', '2018-05-27 11:59:13', '2018-05-27 11:59:13', NULL),
+(56, 'delete_specials', 'specials', '2018-05-27 11:59:13', '2018-05-27 11:59:13', NULL),
+(57, 'browse_infos', 'infos', '2018-06-30 08:49:43', '2018-06-30 08:49:43', NULL),
+(58, 'read_infos', 'infos', '2018-06-30 08:49:43', '2018-06-30 08:49:43', NULL),
+(59, 'edit_infos', 'infos', '2018-06-30 08:49:43', '2018-06-30 08:49:43', NULL),
+(60, 'add_infos', 'infos', '2018-06-30 08:49:43', '2018-06-30 08:49:43', NULL),
+(61, 'delete_infos', 'infos', '2018-06-30 08:49:43', '2018-06-30 08:49:43', NULL),
+(62, 'browse_process', 'process', '2018-06-30 08:57:02', '2018-06-30 08:57:02', NULL),
+(63, 'read_process', 'process', '2018-06-30 08:57:02', '2018-06-30 08:57:02', NULL),
+(64, 'edit_process', 'process', '2018-06-30 08:57:02', '2018-06-30 08:57:02', NULL),
+(65, 'add_process', 'process', '2018-06-30 08:57:02', '2018-06-30 08:57:02', NULL),
+(66, 'delete_process', 'process', '2018-06-30 08:57:02', '2018-06-30 08:57:02', NULL),
+(67, 'browse_processes', 'processes', '2018-06-30 08:58:29', '2018-06-30 08:58:29', NULL),
+(68, 'read_processes', 'processes', '2018-06-30 08:58:29', '2018-06-30 08:58:29', NULL),
+(69, 'edit_processes', 'processes', '2018-06-30 08:58:29', '2018-06-30 08:58:29', NULL),
+(70, 'add_processes', 'processes', '2018-06-30 08:58:29', '2018-06-30 08:58:29', NULL),
+(71, 'delete_processes', 'processes', '2018-06-30 08:58:29', '2018-06-30 08:58:29', NULL),
+(72, 'browse_clips', 'clips', '2018-06-30 09:16:28', '2018-06-30 09:16:28', NULL),
+(73, 'read_clips', 'clips', '2018-06-30 09:16:28', '2018-06-30 09:16:28', NULL),
+(74, 'edit_clips', 'clips', '2018-06-30 09:16:28', '2018-06-30 09:16:28', NULL),
+(75, 'add_clips', 'clips', '2018-06-30 09:16:28', '2018-06-30 09:16:28', NULL),
+(76, 'delete_clips', 'clips', '2018-06-30 09:16:28', '2018-06-30 09:16:28', NULL),
+(77, 'browse_types', 'types', '2018-06-30 09:30:59', '2018-06-30 09:30:59', NULL),
+(78, 'read_types', 'types', '2018-06-30 09:30:59', '2018-06-30 09:30:59', NULL),
+(79, 'edit_types', 'types', '2018-06-30 09:30:59', '2018-06-30 09:30:59', NULL),
+(80, 'add_types', 'types', '2018-06-30 09:30:59', '2018-06-30 09:30:59', NULL),
+(81, 'delete_types', 'types', '2018-06-30 09:30:59', '2018-06-30 09:30:59', NULL),
+(82, 'browse_projects', 'projects', '2018-06-30 11:36:43', '2018-06-30 11:36:43', NULL),
+(83, 'read_projects', 'projects', '2018-06-30 11:36:43', '2018-06-30 11:36:43', NULL),
+(84, 'edit_projects', 'projects', '2018-06-30 11:36:43', '2018-06-30 11:36:43', NULL),
+(85, 'add_projects', 'projects', '2018-06-30 11:36:43', '2018-06-30 11:36:43', NULL),
+(86, 'delete_projects', 'projects', '2018-06-30 11:36:43', '2018-06-30 11:36:43', NULL),
+(87, 'browse_contacts', 'contacts', '2018-06-30 23:27:12', '2018-06-30 23:27:12', NULL),
+(88, 'read_contacts', 'contacts', '2018-06-30 23:27:12', '2018-06-30 23:27:12', NULL),
+(89, 'edit_contacts', 'contacts', '2018-06-30 23:27:12', '2018-06-30 23:27:12', NULL),
+(90, 'add_contacts', 'contacts', '2018-06-30 23:27:12', '2018-06-30 23:27:12', NULL),
+(91, 'delete_contacts', 'contacts', '2018-06-30 23:27:12', '2018-06-30 23:27:12', NULL),
+(92, 'browse_editcontacts', 'editcontacts', '2018-06-30 23:30:35', '2018-06-30 23:30:35', NULL),
+(93, 'read_editcontacts', 'editcontacts', '2018-06-30 23:30:35', '2018-06-30 23:30:35', NULL),
+(94, 'edit_editcontacts', 'editcontacts', '2018-06-30 23:30:35', '2018-06-30 23:30:35', NULL),
+(95, 'add_editcontacts', 'editcontacts', '2018-06-30 23:30:35', '2018-06-30 23:30:35', NULL),
+(96, 'delete_editcontacts', 'editcontacts', '2018-06-30 23:30:35', '2018-06-30 23:30:35', NULL),
+(97, 'browse_banners', 'banners', '2018-07-01 00:35:35', '2018-07-01 00:35:35', NULL),
+(98, 'read_banners', 'banners', '2018-07-01 00:35:35', '2018-07-01 00:35:35', NULL),
+(99, 'edit_banners', 'banners', '2018-07-01 00:35:35', '2018-07-01 00:35:35', NULL),
+(100, 'add_banners', 'banners', '2018-07-01 00:35:35', '2018-07-01 00:35:35', NULL),
+(101, 'delete_banners', 'banners', '2018-07-01 00:35:35', '2018-07-01 00:35:35', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permission_groups`
+--
+
+CREATE TABLE `permission_groups` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permission_role`
+--
+
+CREATE TABLE `permission_role` (
+  `permission_id` int(10) UNSIGNED NOT NULL,
+  `role_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `permission_role`
+--
+
+INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
+(1, 1),
+(1, 2),
+(2, 1),
+(2, 2),
+(3, 1),
+(3, 2),
+(4, 1),
+(4, 2),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1),
+(12, 1),
+(13, 1),
+(14, 1),
+(15, 1),
+(16, 1),
+(17, 1),
+(18, 1),
+(19, 1),
+(20, 1),
+(21, 1),
+(22, 1),
+(23, 1),
+(24, 1),
+(25, 1),
+(25, 2),
+(26, 1),
+(26, 2),
+(27, 1),
+(27, 2),
+(28, 1),
+(28, 2),
+(29, 1),
+(29, 2),
+(30, 1),
+(31, 1),
+(32, 1),
+(33, 1),
+(34, 1),
+(35, 1),
+(36, 1),
+(37, 1),
+(38, 1),
+(39, 1),
+(40, 1),
+(40, 2),
+(41, 1),
+(41, 2),
+(42, 1),
+(43, 1),
+(44, 1),
+(45, 1),
+(46, 1),
+(47, 1),
+(48, 1),
+(49, 1),
+(50, 1),
+(51, 1),
+(52, 1),
+(53, 1),
+(54, 1),
+(55, 1),
+(56, 1),
+(57, 1),
+(58, 1),
+(59, 1),
+(60, 1),
+(61, 1),
+(62, 1),
+(63, 1),
+(64, 1),
+(65, 1),
+(66, 1),
+(67, 1),
+(68, 1),
+(69, 1),
+(70, 1),
+(71, 1),
+(72, 1),
+(73, 1),
+(74, 1),
+(75, 1),
+(76, 1),
+(77, 1),
+(78, 1),
+(79, 1),
+(80, 1),
+(81, 1),
+(82, 1),
+(83, 1),
+(84, 1),
+(85, 1),
+(86, 1),
+(87, 1),
+(88, 1),
+(89, 1),
+(90, 1),
+(91, 1),
+(92, 1),
+(93, 1),
+(94, 1),
+(95, 1),
+(96, 1),
+(97, 1),
+(98, 1),
+(99, 1),
+(100, 1),
+(101, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seo_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `excerpt` text COLLATE utf8mb4_unicode_ci,
+  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci,
+  `meta_keywords` text COLLATE utf8mb4_unicode_ci,
+  `status` enum('PUBLISHED','DRAFT','PENDING') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'DRAFT',
+  `featured` tinyint(1) NOT NULL DEFAULT '0',
+  `hot` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `featured`, `hot`, `created_at`, `updated_at`) VALUES
+(43, 3, 15, 'Creative designs for your next project', 'lorem', 'Etiam eleifend, metus sit amet lacinia commodo, ex lacus facilisis leo, non mattis velit tellus non augue. Cras laoreet justo est, sit amet condimentum eros tempor ac. Aliquam blandit lobortis convallis. Ut quis tristique orci. Nunc eu nibh enim.', '<p style=\"box-sizing: inherit; margin: 0px 0px 1.5em; color: #666666; font-family: Poppins; font-size: 15px; letter-spacing: 0.15px;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend a lectus ac auctor. Nulla facilisi. Suspendisse potenti. Praesent nisl augue, porttitor ut tempor ac, consectetur ut lorem. Aenean eleifend, dui in commodo tempus, urna lorem ultrices velit, vitae feugiat arcu urna in tellus. Sed accumsan neque in lorem laoreet faucibus. Proin sapien odio, venenatis venenatis augue vitae, mollis commodo magna. Fusce id mattis mauris. Etiam a commodo ligula, quis molestie leo. Duis ultricies odio vel ligula tempus iaculis. Sed interdum imperdiet odio nec gravida. Vivamus in sem sed elit tempor gravida. Duis lacus orci, tincidunt non dolor eu, porta suscipit augue. Nunc ultrices libero tortor, in lobortis quam finibus id. Quisque gravida fringilla nisl sit amet viverra.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1.5em; color: #666666; font-family: Poppins; font-size: 15px; letter-spacing: 0.15px;\">Cras varius mollis ligula, eu ultrices ipsum consectetur vitae. Fusce sit amet eleifend elit. Phasellus vel dapibus sem, quis iaculis ante. Nam et faucibus magna, nec accumsan sapien. Donec aliquet eget nibh a malesuada. Aliquam ut est et odio bibendum porta. Nam suscipit tempor suscipit. Nulla pretium justo volutpat massa scelerisque, et auctor nulla tincidunt. Nunc eget magna vitae nunc venenatis dictum. Aliquam sapien nisl, accumsan nec venenatis in, tincidunt non lectus. Nam feugiat interdum metus, at dignissim augue laoreet at. Mauris malesuada mi a pretium mattis. Mauris eleifend arcu non sodales lobortis. Donec elementum, ex id imperdiet fringilla, lacus lacus vestibulum risus, vitae efficitur lorem tortor eget dolor. Aenean ac auctor justo, sed maximus enim. Donec faucibus maximus metus, ut porttitor erat tempor quis.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1.5em; color: #666666; font-family: Poppins; font-size: 15px; letter-spacing: 0.15px;\">Praesent id sapien venenatis, gravida est ut, volutpat massa. Vestibulum imperdiet diam vitae venenatis egestas. Aliquam ac scelerisque mauris. Aliquam sollicitudin nulla ac nulla congue, a laoreet sem tincidunt. Nulla mi massa, volutpat eu aliquet ac, cursus id sem. Curabitur congue lectus id ipsum varius, ut malesuada lacus lacinia. Sed lobortis dignissim urna fringilla imperdiet. Donec aliquam vestibulum dolor ut consequat. Cras finibus imperdiet metus, et accumsan tortor pulvinar sit amet. Duis libero velit, hendrerit ut accumsan in, viverra ac tortor. Mauris in diam consectetur, posuere mi in, varius arcu. Phasellus lobortis vel lorem et convallis. Curabitur finibus enim id lacus vehicula efficitur. Sed et felis sodales, mollis purus et, elementum tellus. Suspendisse finibus elit at purus vulputate, sit amet tincidunt ante luctus.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px; color: #666666; font-family: Poppins; font-size: 15px; letter-spacing: 0.15px;\">Praesent feugiat nec nisl eget sollicitudin. Sed nec felis non risus accumsan commodo non vitae arcu. Proin facilisis mattis ligula, sed ultricies mi porta id. Praesent ligula nunc, suscipit a malesuada eget, cursus sed metus. Phasellus tincidunt convallis congue. Aliquam hendrerit odio mauris, nec ullamcorper nulla vehicula in. Etiam sagittis felis metus, fringilla sagittis dui convallis sit amet. Fusce imperdiet dui sed sem imperdiet, in scelerisque tortor laoreet. Sed quis aliquet arcu, eu vestibulum purus. Suspendisse semper massa varius, malesuada nisi pretium, viverra sapien. Etiam eleifend, metus sit amet lacinia commodo, ex lacus facilisis leo, non mattis velit tellus non augue. Cras laoreet justo est, sit amet condimentum eros tempor ac. Aliquam blandit lobortis convallis. Ut quis tristique orci. Nunc eu nibh enim.</p>', 'posts/June2018/ICBJvIFtTdCtKYeSSIHL.jpeg', 'creative-designs-for-your-next-project', 'Sed et felis sodales, mollis purus et, elementum tellus. Suspendisse finibus elit at purus vulputate, sit amet tincidunt ante luctus.', 'Sed et felis sodales, mollis purus et, elementum tellus. Suspendisse finibus elit at purus vulputate, sit amet tincidunt ante luctus.', 'PUBLISHED', 0, 1, '2018-06-30 12:43:42', '2018-06-30 12:46:46'),
+(44, 3, 15, 'Modern furniture designs for your dream lorem ipsum is a dummy text home', NULL, 'Praesent id sapien venenatis, gravida est ut, volutpat massa. Vestibulum imperdiet diam vitae venenatis egestas. Aliquam ac scelerisque mauris.', '<div class=\" mb-50\" style=\"box-sizing: inherit; margin-bottom: 50px;\">\r\n<div class=\"content-wrap entry-content mb-0\" style=\"box-sizing: inherit; margin: 0px; padding: 0px 100px;\">\r\n<div class=\"entry-post-content  mb-20\" style=\"box-sizing: inherit; margin-bottom: 20px;\">\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1.5em;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend a lectus ac auctor. Nulla facilisi. Suspendisse potenti. Praesent nisl augue, porttitor ut tempor ac, consectetur ut lorem. Aenean eleifend, dui in commodo tempus, urna lorem ultrices velit, vitae feugiat arcu urna in tellus. Sed accumsan neque in lorem laoreet faucibus. Proin sapien odio, venenatis venenatis augue vitae, mollis commodo magna. Fusce id mattis mauris. Etiam a commodo ligula, quis molestie leo. Duis ultricies odio vel ligula tempus iaculis. Sed interdum imperdiet odio nec gravida. Vivamus in sem sed elit tempor gravida. Duis lacus orci, tincidunt non dolor eu, porta suscipit augue. Nunc ultrices libero tortor, in lobortis quam finibus id. Quisque gravida fringilla nisl sit amet viverra.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1.5em;\">Cras varius mollis ligula, eu ultrices ipsum consectetur vitae. Fusce sit amet eleifend elit. Phasellus vel dapibus sem, quis iaculis ante. Nam et faucibus magna, nec accumsan sapien. Donec aliquet eget nibh a malesuada. Aliquam ut est et odio bibendum porta. Nam suscipit tempor suscipit. Nulla pretium justo volutpat massa scelerisque, et auctor nulla tincidunt. Nunc eget magna vitae nunc venenatis dictum. Aliquam sapien nisl, accumsan nec venenatis in, tincidunt non lectus. Nam feugiat interdum metus, at dignissim augue laoreet at. Mauris malesuada mi a pretium mattis. Mauris eleifend arcu non sodales lobortis. Donec elementum, ex id imperdiet fringilla, lacus lacus vestibulum risus, vitae efficitur lorem tortor eget dolor. Aenean ac auctor justo, sed maximus enim. Donec faucibus maximus metus, ut porttitor erat tempor quis.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1.5em;\">Praesent id sapien venenatis, gravida est ut, volutpat massa. Vestibulum imperdiet diam vitae venenatis egestas. Aliquam ac scelerisque mauris. Aliquam sollicitudin nulla ac nulla congue, a laoreet sem tincidunt. Nulla mi massa, volutpat eu aliquet ac, cursus id sem. Curabitur congue lectus id ipsum varius, ut malesuada lacus lacinia. Sed lobortis dignissim urna fringilla imperdiet. Donec aliquam vestibulum dolor ut consequat. Cras finibus imperdiet metus, et accumsan tortor pulvinar sit amet. Duis libero velit, hendrerit ut accumsan in, viverra ac tortor. Mauris in diam consectetur, posuere mi in, varius arcu. Phasellus lobortis vel lorem et convallis. Curabitur finibus enim id lacus vehicula efficitur. Sed et felis sodales, mollis purus et, elementum tellus. Suspendisse finibus elit at purus vulputate, sit amet tincidunt ante luctus.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px;\">Praesent feugiat nec nisl eget sollicitudin. Sed nec felis non risus accumsan commodo non vitae arcu. Proin facilisis mattis ligula, sed ultricies mi porta id. Praesent ligula nunc, suscipit a malesuada eget, cursus sed metus. Phasellus tincidunt convallis congue. Aliquam hendrerit odio mauris, nec ullamcorper nulla vehicula in. Etiam sagittis felis metus, fringilla sagittis dui convallis sit amet. Fusce imperdiet dui sed sem imperdiet, in scelerisque tortor laoreet. Sed quis aliquet arcu, eu vestibulum purus. Suspendisse semper massa varius, malesuada nisi pretium, viverra sapien. Etiam eleifend, metus sit amet lacinia commodo, ex lacus facilisis leo, non mattis velit tellus non augue. Cras laoreet justo est, sit amet condimentum eros tempor ac. Aliquam blandit lobortis convallis. Ut quis tristique orci. Nunc eu nibh eni</p>\r\n</div>\r\n</div>\r\n</div>', 'posts/June2018/3UVQYq6PVTipW3Nn0Z6g.jpeg', 'modern-furniture-designs-for-your-dream-lorem-ipsum-is-a-dummy-text-home', 'Praesent id sapien venenatis, gravida est ut, volutpat massa. Vestibulum imperdiet diam vitae venenatis egestas. Aliquam ac scelerisque mauris.', 'Praesent id sapien venenatis, gravida est ut, volutpat massa. Vestibulum imperdiet diam vitae venenatis egestas. Aliquam ac scelerisque mauris.', 'PUBLISHED', 0, 0, '2018-06-30 12:48:16', '2018-06-30 12:48:16'),
+(45, 3, 15, 'Perfect interior decor for your office', 'Praesent id sapien venenatis, gravida est ut, volutpat massa. Vestibulum imperdiet diam vitae venenatis egestas. Aliquam ac scelerisque mauris.', 'Praesent id sapien venenatis, gravida est ut, volutpat massa. Vestibulum imperdiet diam vitae venenatis egestas. Aliquam ac scelerisque mauris.', '<p style=\"box-sizing: inherit; margin: 0px 0px 1.5em; color: #666666; font-family: Poppins; font-size: 15px; letter-spacing: 0.15px;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend a lectus ac auctor. Nulla facilisi. Suspendisse potenti. Praesent nisl augue, porttitor ut tempor ac, consectetur ut lorem. Aenean eleifend, dui in commodo tempus, urna lorem ultrices velit, vitae feugiat arcu urna in tellus. Sed accumsan neque in lorem laoreet faucibus. Proin sapien odio, venenatis venenatis augue vitae, mollis commodo magna. Fusce id mattis mauris. Etiam a commodo ligula, quis molestie leo. Duis ultricies odio vel ligula tempus iaculis. Sed interdum imperdiet odio nec gravida. Vivamus in sem sed elit tempor gravida. Duis lacus orci, tincidunt non dolor eu, porta suscipit augue. Nunc ultrices libero tortor, in lobortis quam finibus id. Quisque gravida fringilla nisl sit amet viverra.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1.5em; color: #666666; font-family: Poppins; font-size: 15px; letter-spacing: 0.15px;\">Cras varius mollis ligula, eu ultrices ipsum consectetur vitae. Fusce sit amet eleifend elit. Phasellus vel dapibus sem, quis iaculis ante. Nam et faucibus magna, nec accumsan sapien. Donec aliquet eget nibh a malesuada. Aliquam ut est et odio bibendum porta. Nam suscipit tempor suscipit. Nulla pretium justo volutpat massa scelerisque, et auctor nulla tincidunt. Nunc eget magna vitae nunc venenatis dictum. Aliquam sapien nisl, accumsan nec venenatis in, tincidunt non lectus. Nam feugiat interdum metus, at dignissim augue laoreet at. Mauris malesuada mi a pretium mattis. Mauris eleifend arcu non sodales lobortis. Donec elementum, ex id imperdiet fringilla, lacus lacus vestibulum risus, vitae efficitur lorem tortor eget dolor. Aenean ac auctor justo, sed maximus enim. Donec faucibus maximus metus, ut porttitor erat tempor quis.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px 0px 1.5em; color: #666666; font-family: Poppins; font-size: 15px; letter-spacing: 0.15px;\">Praesent id sapien venenatis, gravida est ut, volutpat massa. Vestibulum imperdiet diam vitae venenatis egestas. Aliquam ac scelerisque mauris. Aliquam sollicitudin nulla ac nulla congue, a laoreet sem tincidunt. Nulla mi massa, volutpat eu aliquet ac, cursus id sem. Curabitur congue lectus id ipsum varius, ut malesuada lacus lacinia. Sed lobortis dignissim urna fringilla imperdiet. Donec aliquam vestibulum dolor ut consequat. Cras finibus imperdiet metus, et accumsan tortor pulvinar sit amet. Duis libero velit, hendrerit ut accumsan in, viverra ac tortor. Mauris in diam consectetur, posuere mi in, varius arcu. Phasellus lobortis vel lorem et convallis. Curabitur finibus enim id lacus vehicula efficitur. Sed et felis sodales, mollis purus et, elementum tellus. Suspendisse finibus elit at purus vulputate, sit amet tincidunt ante luctus.</p>\r\n<p style=\"box-sizing: inherit; margin: 0px; color: #666666; font-family: Poppins; font-size: 15px; letter-spacing: 0.15px;\">Praesent feugiat nec nisl eget sollicitudin. Sed nec felis non risus accumsan commodo non vitae arcu. Proin facilisis mattis ligula, sed ultricies mi porta id. Praesent ligula nunc, suscipit a malesuada eget, cursus sed metus. Phasellus tincidunt convallis congue. Aliquam hendrerit odio mauris, nec ullamcorper nulla vehicula in. Etiam sagittis felis metus, fringilla sagittis dui convallis sit amet. Fusce imperdiet dui sed sem imperdiet, in scelerisque tortor laoreet. Sed quis aliquet arcu, eu vestibulum purus. Suspendisse semper massa varius, malesuada nisi pretium, viverra sapien. Etiam eleifend, metus sit amet lacinia commodo, ex lacus facilisis leo, non mattis velit tellus non augue. Cras laoreet justo est, sit amet condimentum eros tempor ac. Aliquam blandit lobortis convallis. Ut quis tristique orci. Nunc eu nibh enim.</p>', 'posts/June2018/369QViuMR6esua7NohMl.jpeg', 'perfect-interior-decor-for-your-office', 'Praesent id sapien venenatis, gravida est ut, volutpat massa. Vestibulum imperdiet diam vitae venenatis egestas. Aliquam ac scelerisque mauris.', 'Praesent id sapien venenatis, gravida est ut, volutpat massa. Vestibulum imperdiet diam vitae venenatis egestas. Aliquam ac scelerisque mauris.', 'PENDING', 0, 0, '2018-06-30 13:02:10', '2018-07-01 04:33:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `processes`
+--
+
+CREATE TABLE `processes` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `images` text COLLATE utf8_unicode_ci,
+  `title` text COLLATE utf8_unicode_ci,
+  `content` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `processes`
+--
+
+INSERT INTO `processes` (`id`, `images`, `title`, `content`, `created_at`, `updated_at`) VALUES
+(1, 'processes/June2018/UgiO8wenJ4DRp8OZIzXT.png', 'Lên ý tưởng', 'Cropping systems vary among farms depending on the available resources and constraints; geography and climate of the farm; economic and the philosophy and culture of the farmer.', '2018-06-30 09:00:35', '2018-06-30 09:00:35'),
+(2, 'processes/June2018/PnB0oYrrE1B7AQKydKX5.png', 'Thực hiện', 'Cropping systems vary among farms depending on the available resources and constraints; geography and climate of the farm; economic and the philosophy and culture of the farmer.', '2018-06-30 09:01:07', '2018-06-30 09:01:07'),
+(3, 'processes/June2018/zjaAKO7ouAv57Lz8pYls.png', 'Xuất ra file', 'Cropping systems vary among farms depending on the available resources and constraints; geography and climate of the farm; economic and the philosophy and culture of the farmer.', '2018-06-30 09:01:41', '2018-06-30 09:01:41'),
+(4, 'processes/June2018/2SdkDo1vn9d4LxicUUvu.png', 'Kiểm tra chất lượng', 'Cropping systems vary among farms depending on the available resources and constraints; geography and climate of the farm; economic and the philosophy and culture of the farmer.', '2018-06-30 09:01:56', '2018-06-30 09:01:56');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `projects`
+--
+
+CREATE TABLE `projects` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` text COLLATE utf8_unicode_ci,
+  `images` text COLLATE utf8_unicode_ci,
+  `video` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `hot` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `projects`
+--
+
+INSERT INTO `projects` (`id`, `title`, `images`, `video`, `created_at`, `updated_at`, `hot`) VALUES
+(1, 'DA 73129123 ( Căn hộ chung cư Phú Mỹ Hưng )', 'projects/June2018/t15YxfWnOxlhRUD3B6CL.jpg', 'f_LgWgzCPnQ', '2018-06-30 11:38:03', '2018-06-30 11:38:03', 1),
+(2, 'DA N123A3  ( Căn hộ chung cư Phú Mỹ Hưng )', 'projects/June2018/j8Bw4JmMUaCSuOnZRhrx.jpg', 'f_LgWgzCPnQ', '2018-06-30 11:38:29', '2018-06-30 11:38:29', 1),
+(3, 'DA 234K123  ( Căn hộ chung cư Phú Mỹ Hưng )', 'projects/June2018/rKr3f1hmLtf2derma6fD.jpg', 'f_LgWgzCPnQ', '2018-06-30 11:38:44', '2018-06-30 11:38:44', 1),
+(4, 'DA 12213AMCA  ( Căn hộ chung cư Phú Mỹ Hưng )', 'projects/June2018/RZiT46Y16tJCg9bq2dXp.jpg', 'f_LgWgzCPnQ', '2018-06-30 11:39:11', '2018-06-30 11:39:11', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'Administrator', '2018-03-11 23:49:35', '2018-03-11 23:49:35'),
+(2, 'user', 'Normal User', '2018-03-11 23:49:35', '2018-03-11 23:49:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `key` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` text COLLATE utf8mb4_unicode_ci,
+  `details` text COLLATE utf8mb4_unicode_ci,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order` int(11) NOT NULL DEFAULT '1',
+  `group` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`, `order`, `group`) VALUES
+(1, 'site.title', 'Site Title', 'Site Title', '', 'text', 1, 'Site'),
+(2, 'site.description', 'Site Description', 'Site Description', '', 'text', 2, 'Site'),
+(3, 'site.logo', 'Site Logo', '', '', 'image', 3, 'Site'),
+(4, 'site.google_analytics_tracking_id', 'Google Analytics Tracking ID', '', '', 'text', 4, 'Site'),
+(5, 'admin.bg_image', 'Admin Background Image', '', '', 'image', 5, 'Admin'),
+(6, 'admin.title', 'Admin Title', 'Witayl', '', 'text', 1, 'Admin'),
+(7, 'admin.description', 'Admin Description', 'Welcome to Witayl.', '', 'text', 2, 'Admin'),
+(8, 'admin.loader', 'Admin Loader', '', '', 'image', 3, 'Admin'),
+(9, 'admin.icon_image', 'Admin Icon Image', 'settings/March2018/5N1J1LgFzvoTCGd4t9bi.png', '', 'image', 4, 'Admin'),
+(10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', '', '', 'text', 1, 'Admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sliders`
+--
+
+CREATE TABLE `sliders` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `images` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `text1` text COLLATE utf8_unicode_ci,
+  `text2` text COLLATE utf8_unicode_ci,
+  `text3` text COLLATE utf8_unicode_ci,
+  `text4` text COLLATE utf8_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `sliders`
+--
+
+INSERT INTO `sliders` (`id`, `images`, `created_at`, `updated_at`, `text1`, `text2`, `text3`, `text4`) VALUES
+(6, 'sliders/July2018/r5MoIQqTxl416QdmF9Rf.jpg', '2018-06-30 08:41:00', '2018-07-01 00:28:25', 'AGRICULTURE COMPANY', 'NỘI THẤT TÍCH HỢP', 'CULTIVATING NEW CROPS TO MAKE FARMERS INCREASE PROFITS', 'DISCOVER OUR COMPANY');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `translations`
+--
+
+CREATE TABLE `translations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `table_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `column_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foreign_key` int(10) UNSIGNED NOT NULL,
+  `locale` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `types`
+--
+
+CREATE TABLE `types` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` text COLLATE utf8_unicode_ci,
+  `content` longtext COLLATE utf8_unicode_ci,
+  `images` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `types`
+--
+
+INSERT INTO `types` (`id`, `title`, `content`, `images`, `created_at`, `updated_at`, `category_id`) VALUES
+(1, 'Phong cách bán cổ điển', 'Để thiết kế căn hộ theo phong cách bán cổ điển bạn nên chọn tông màu lạnh hoặc trung tính để thể hiện đúng tính chất của nó. Những món đồ nội thất mang nét cổ điển là điểm nhất trong căn phòng khách này như là: đèn trần, sofa và chân đèn. Tất cả hòa quyện lại tạo nên một tổng thể vô cùng trang nhã và thời thượng.\r\n\r\nGóc bếp được ốp vân đá làm bật lên nét thẩm mỹ trong từng đường nét giữa tông chủ đạo trắng trang nhã. Gạch lót sàn mang hơi hướm cổ điển Châu âu kết hợp cùng thảm hoa văn càng làm cho căn bếp thêm quyến rũ hơn\r\n\r\nPhòng ngủ đậm nét mỹ thuật cổ điển, tông màu lạnh giúp bạn cảm thấy như diện tích được mở rộng hơn, thông thoáng hơn và cảm giác thoải mái hơn cùng nét lãng mạn của đèn trang trí đầy nghệ thuật.', 'types/June2018/1STsKojbHd5q89fVMagP.jpeg', '2018-06-30 10:59:00', '2018-06-30 12:27:14', 20),
+(2, 'Nếu như không có thì', 'Để thiết kế căn hộ theo phong cách bán cổ điển bạn nên chọn tông màu lạnh hoặc trung tính để thể hiện đúng tính chất của nó. Những món đồ nội thất mang nét cổ điển là điểm nhất trong căn phòng khách này như là: đèn trần, sofa và chân đèn. Tất cả hòa quyện lại tạo nên một tổng thể vô cùng trang nhã và thời thượng.\r\n\r\nGóc bếp được ốp vân đá làm bật lên nét thẩm mỹ trong từng đường nét giữa tông chủ đạo trắng trang nhã. Gạch lót sàn mang hơi hướm cổ điển Châu âu kết hợp cùng thảm hoa văn càng làm cho căn bếp thêm quyến rũ hơn\r\n\r\nPhòng ngủ đậm nét mỹ thuật cổ điển, tông màu lạnh giúp bạn cảm thấy như diện tích được mở rộng hơn, thông thoáng hơn và cảm giác thoải mái hơn cùng nét lãng mạn của đèn trang trí đầy nghệ thuật.', 'types/June2018/DntMMNZUX44pfix0URoP.jpeg', '2018-06-30 12:20:00', '2018-06-30 12:27:08', 20),
+(3, 'Phong cách bán cổ điển', 'Để thiết kế căn hộ theo phong cách bán cổ điển bạn nên chọn tông màu lạnh hoặc trung tính để thể hiện đúng tính chất của nó. Những món đồ nội thất mang nét cổ điển là điểm nhất trong căn phòng khách này như là: đèn trần, sofa và chân đèn. Tất cả hòa quyện lại tạo nên một tổng thể vô cùng trang nhã và thời thượng.\r\n\r\nGóc bếp được ốp vân đá làm bật lên nét thẩm mỹ trong từng đường nét giữa tông chủ đạo trắng trang nhã. Gạch lót sàn mang hơi hướm cổ điển Châu âu kết hợp cùng thảm hoa văn càng làm cho căn bếp thêm quyến rũ hơn\r\n\r\nPhòng ngủ đậm nét mỹ thuật cổ điển, tông màu lạnh giúp bạn cảm thấy như diện tích được mở rộng hơn, thông thoáng hơn và cảm giác thoải mái hơn cùng nét lãng mạn của đèn trang trí đầy nghệ thuật.', 'types/June2018/1STsKojbHd5q89fVMagP.jpeg', '2018-06-30 10:59:00', '2018-06-30 12:27:14', 20),
+(4, 'Nếu như không có thì', 'Để thiết kế căn hộ theo phong cách bán cổ điển bạn nên chọn tông màu lạnh hoặc trung tính để thể hiện đúng tính chất của nó. Những món đồ nội thất mang nét cổ điển là điểm nhất trong căn phòng khách này như là: đèn trần, sofa và chân đèn. Tất cả hòa quyện lại tạo nên một tổng thể vô cùng trang nhã và thời thượng.\r\n\r\nGóc bếp được ốp vân đá làm bật lên nét thẩm mỹ trong từng đường nét giữa tông chủ đạo trắng trang nhã. Gạch lót sàn mang hơi hướm cổ điển Châu âu kết hợp cùng thảm hoa văn càng làm cho căn bếp thêm quyến rũ hơn\r\n\r\nPhòng ngủ đậm nét mỹ thuật cổ điển, tông màu lạnh giúp bạn cảm thấy như diện tích được mở rộng hơn, thông thoáng hơn và cảm giác thoải mái hơn cùng nét lãng mạn của đèn trang trí đầy nghệ thuật.', 'types/June2018/DntMMNZUX44pfix0URoP.jpeg', '2018-06-30 12:20:00', '2018-06-30 12:27:08', 20),
+(5, 'Phong cách bán cổ điển', 'Để thiết kế căn hộ theo phong cách bán cổ điển bạn nên chọn tông màu lạnh hoặc trung tính để thể hiện đúng tính chất của nó. Những món đồ nội thất mang nét cổ điển là điểm nhất trong căn phòng khách này như là: đèn trần, sofa và chân đèn. Tất cả hòa quyện lại tạo nên một tổng thể vô cùng trang nhã và thời thượng.\r\n\r\nGóc bếp được ốp vân đá làm bật lên nét thẩm mỹ trong từng đường nét giữa tông chủ đạo trắng trang nhã. Gạch lót sàn mang hơi hướm cổ điển Châu âu kết hợp cùng thảm hoa văn càng làm cho căn bếp thêm quyến rũ hơn\r\n\r\nPhòng ngủ đậm nét mỹ thuật cổ điển, tông màu lạnh giúp bạn cảm thấy như diện tích được mở rộng hơn, thông thoáng hơn và cảm giác thoải mái hơn cùng nét lãng mạn của đèn trang trí đầy nghệ thuật.', 'types/June2018/1STsKojbHd5q89fVMagP.jpeg', '2018-06-30 10:59:00', '2018-06-30 12:27:14', 20),
+(6, 'Nếu như không có thì', 'Để thiết kế căn hộ theo phong cách bán cổ điển bạn nên chọn tông màu lạnh hoặc trung tính để thể hiện đúng tính chất của nó. Những món đồ nội thất mang nét cổ điển là điểm nhất trong căn phòng khách này như là: đèn trần, sofa và chân đèn. Tất cả hòa quyện lại tạo nên một tổng thể vô cùng trang nhã và thời thượng.\r\n\r\nGóc bếp được ốp vân đá làm bật lên nét thẩm mỹ trong từng đường nét giữa tông chủ đạo trắng trang nhã. Gạch lót sàn mang hơi hướm cổ điển Châu âu kết hợp cùng thảm hoa văn càng làm cho căn bếp thêm quyến rũ hơn\r\n\r\nPhòng ngủ đậm nét mỹ thuật cổ điển, tông màu lạnh giúp bạn cảm thấy như diện tích được mở rộng hơn, thông thoáng hơn và cảm giác thoải mái hơn cùng nét lãng mạn của đèn trang trí đầy nghệ thuật.', 'types/June2018/DntMMNZUX44pfix0URoP.jpeg', '2018-06-30 12:20:00', '2018-06-30 12:27:08', 20),
+(7, 'Phong cách bán cổ điển', 'Để thiết kế căn hộ theo phong cách bán cổ điển bạn nên chọn tông màu lạnh hoặc trung tính để thể hiện đúng tính chất của nó. Những món đồ nội thất mang nét cổ điển là điểm nhất trong căn phòng khách này như là: đèn trần, sofa và chân đèn. Tất cả hòa quyện lại tạo nên một tổng thể vô cùng trang nhã và thời thượng.\r\n\r\nGóc bếp được ốp vân đá làm bật lên nét thẩm mỹ trong từng đường nét giữa tông chủ đạo trắng trang nhã. Gạch lót sàn mang hơi hướm cổ điển Châu âu kết hợp cùng thảm hoa văn càng làm cho căn bếp thêm quyến rũ hơn\r\n\r\nPhòng ngủ đậm nét mỹ thuật cổ điển, tông màu lạnh giúp bạn cảm thấy như diện tích được mở rộng hơn, thông thoáng hơn và cảm giác thoải mái hơn cùng nét lãng mạn của đèn trang trí đầy nghệ thuật.', 'types/June2018/1STsKojbHd5q89fVMagP.jpeg', '2018-06-30 10:59:00', '2018-06-30 12:27:14', 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `role_id` int(10) UNSIGNED DEFAULT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `avatar` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT 'users/default.png',
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `settings` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
+(3, 1, 'admin', 'your@email.com', 'users/June2018/1LsDJ76gYyxE0UjSl3AS.png', '$2y$10$08OxEbSTXn3Gfhd18fyuPOjoVGNxsp/1MVVjTmhGQbJaTx3k8Hi/i', NULL, '{\"locale\":\"en\"}', '2018-03-11 23:53:41', '2018-06-30 07:32:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_roles`
+--
+
+CREATE TABLE `user_roles` (
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `role_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `banners`
+--
+ALTER TABLE `banners`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `categories_parent_id_foreign` (`parent_id`);
+
+--
+-- Indexes for table `clips`
+--
+ALTER TABLE `clips`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `data_rows`
+--
+ALTER TABLE `data_rows`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `data_rows_data_type_id_foreign` (`data_type_id`);
+
+--
+-- Indexes for table `data_types`
+--
+ALTER TABLE `data_types`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `data_types_name_unique` (`name`),
+  ADD UNIQUE KEY `data_types_slug_unique` (`slug`);
+
+--
+-- Indexes for table `editcontacts`
+--
+ALTER TABLE `editcontacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `infos`
+--
+ALTER TABLE `infos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `menus`
+--
+ALTER TABLE `menus`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `menus_name_unique` (`name`);
+
+--
+-- Indexes for table `menu_items`
+--
+ALTER TABLE `menu_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `menu_items_menu_id_foreign` (`menu_id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pages`
+--
+ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `pages_slug_unique` (`slug`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `permissions_key_index` (`key`);
+
+--
+-- Indexes for table `permission_groups`
+--
+ALTER TABLE `permission_groups`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `permission_groups_name_unique` (`name`);
+
+--
+-- Indexes for table `permission_role`
+--
+ALTER TABLE `permission_role`
+  ADD PRIMARY KEY (`permission_id`,`role_id`),
+  ADD KEY `permission_role_permission_id_index` (`permission_id`),
+  ADD KEY `permission_role_role_id_index` (`role_id`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `posts_slug_unique` (`slug`);
+
+--
+-- Indexes for table `processes`
+--
+ALTER TABLE `processes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `projects`
+--
+ALTER TABLE `projects`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `roles_name_unique` (`name`);
+
+--
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `settings_key_unique` (`key`);
+
+--
+-- Indexes for table `sliders`
+--
+ALTER TABLE `sliders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `translations`
+--
+ALTER TABLE `translations`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `translations_table_name_column_name_foreign_key_locale_unique` (`table_name`,`column_name`,`foreign_key`,`locale`);
+
+--
+-- Indexes for table `types`
+--
+ALTER TABLE `types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD KEY `users_role_id_foreign` (`role_id`);
+
+--
+-- Indexes for table `user_roles`
+--
+ALTER TABLE `user_roles`
+  ADD PRIMARY KEY (`user_id`,`role_id`),
+  ADD KEY `user_roles_user_id_index` (`user_id`),
+  ADD KEY `user_roles_role_id_index` (`role_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `banners`
+--
+ALTER TABLE `banners`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `clips`
+--
+ALTER TABLE `clips`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `data_rows`
+--
+ALTER TABLE `data_rows`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+
+--
+-- AUTO_INCREMENT for table `data_types`
+--
+ALTER TABLE `data_types`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `editcontacts`
+--
+ALTER TABLE `editcontacts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `infos`
+--
+ALTER TABLE `infos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `menus`
+--
+ALTER TABLE `menus`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `menu_items`
+--
+ALTER TABLE `menu_items`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+
+--
+-- AUTO_INCREMENT for table `permission_groups`
+--
+ALTER TABLE `permission_groups`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT for table `processes`
+--
+ALTER TABLE `processes`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `projects`
+--
+ALTER TABLE `projects`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `sliders`
+--
+ALTER TABLE `sliders`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `translations`
+--
+ALTER TABLE `translations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `types`
+--
+ALTER TABLE `types`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `categories`
+--
+ALTER TABLE `categories`
+  ADD CONSTRAINT `categories_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Constraints for table `data_rows`
+--
+ALTER TABLE `data_rows`
+  ADD CONSTRAINT `data_rows_data_type_id_foreign` FOREIGN KEY (`data_type_id`) REFERENCES `data_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `menu_items`
+--
+ALTER TABLE `menu_items`
+  ADD CONSTRAINT `menu_items_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `permission_role`
+--
+ALTER TABLE `permission_role`
+  ADD CONSTRAINT `permission_role_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
+
+--
+-- Constraints for table `user_roles`
+--
+ALTER TABLE `user_roles`
+  ADD CONSTRAINT `user_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user_roles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
