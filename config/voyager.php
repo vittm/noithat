@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'assets_path' => '/vendor/tcg/voyager/assets',
+    'assets_path' => '/public/vendor/tcg/voyager/assets',
 
     /*
     |--------------------------------------------------------------------------
@@ -120,13 +120,13 @@ return [
         /*
          * Select default language
          */
-        'default' => 'vi',
+        'default' => 'en',
 
         /*
          * Select languages that are supported.
          */
         'locales' => [
-            'vi',
+            'en',
             //'pt',
         ],
     ],

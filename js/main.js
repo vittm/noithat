@@ -51,7 +51,7 @@ $(document).ready(function () {
         sliderPrev('entry-content__slider__content-group');
         sliderPrev('entry-content__slider__thumb__images');
     });
-    $('.entry-content__slider__thumb__images').click(function(){
+    $('.entry-content__slider__thumb__images').click(function(e){
         let numberOldContent = $('.entry-content__slider__content-group.active').index();
         let numberOldThumb = $('.entry-content__slider__thumb__images.active').index(); 
         let number = $(this).index();

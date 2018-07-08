@@ -30,6 +30,11 @@ class ListingsController extends Controller
         $listings = DB::table('projects')->get();  
         return view('project',['listings'=>$listings]);
     }
+    public function listing_product()
+    {
+        $listings = DB::table('categories')->where('parent_id','=',25)->get();  
+        return view('product.project',['listings'=>$listings]);
+    }
     public function listing_blog()
     {
         $id= DB::table('categories')->where('slug','=','tin-tuc')->first();

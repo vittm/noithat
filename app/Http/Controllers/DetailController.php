@@ -30,4 +30,10 @@ class DetailController extends Controller
         $detail= DB::table('posts')->where('slug','=',$rq->slug)->first();  
         return view('blog.detail',['detail'=>$detail]);
     }
+    public function product(Request $rq)
+    {
+        $category_id= DB::table('categories')->where('slug','=',$rq->slug)->first();
+        $detail= DB::table('products')->where('category_id','=',$category_id->id)->first();  
+        return view('product.detail',['detail'=>$detail]);
+    }
 }
